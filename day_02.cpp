@@ -37,19 +37,6 @@ int reverse(int x) {
     return rev;
 }
 
-struct TreeNode {
-     int val;
-     TreeNode *left;
-     TreeNode *right;
-     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-};
-
-int goodNodes(TreeNode* root) {
-   
-}
-
 int maxArea(vector<int>& height){
     int max_water = 0;
     int i = 0;
