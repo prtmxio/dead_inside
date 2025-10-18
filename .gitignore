@@ -1,0 +1,30 @@
+# Ignore everything by default
+*
+
+# But track these file types
+!*.cpp
+!*.h
+!*.hpp
+!*.c
+!*.txt
+!*.md
+
+# Track .gitignore itself
+!.gitignore
+
+# Keep directories
+!*/
+
+# Ignore compiled executables and object files
+*.o
+*.out
+*.exe
+a.out
+
+# Ignore specific practice file
+basic_020825
+basic_020825.cpp
+
+# Ignore input/output files used for testing
+input.txt
+output.txt
