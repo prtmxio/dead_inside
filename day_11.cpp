@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <cstddef>
 #include <string>
 #include <vector>
 using namespace std;
@@ -9,7 +8,7 @@ using namespace std;
 // 6-7-8  (n+2 -> n+4)          9-10-11 (n+4 -> n+6)      12-13-14 (n+6 -> n+8)
 // 15-16-17-18 (n+8 -> n+11)    19-20-21 (n+11 -> n+13)   22-23-24-25 (n+13 -> n+16)
 //
-//  45 - (9-k) (8-k)/2
+//  45 - (9-k) (10-k)/2
 //
 
 vector<int> get_range(int n){
