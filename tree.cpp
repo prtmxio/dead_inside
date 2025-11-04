@@ -179,53 +179,81 @@ int path_sum(struct node* root, int& max_sum){
     return (root->data) + max(left_sum, right_sum);
 }
 
+bool equal_tree(struct node* r1, struct node* r2){
+    if(r1 == NULL || r2 == NULL) return (r1 == r2);
+    return (r1->data == r2->data) && equal_tree(r1->left, r2->left) && equal_tree(r1->right, r2->right);
+
+}
+
+void printTree(struct node* root, string indent, bool isLeft) {
+    if (root == NULL) return;
+    printTree(root->right, indent + (isLeft ? "│   " : "    "), false);
+
+    cout << indent;
+
+    if (isLeft) cout << "└── "; // Left child marker
+    else  cout << "┌── "; // Right child marker (or root)
+
+    cout << root->data << endl;
+
+    printTree(root->left, indent + (isLeft ? "    " : "│   "), true);
+}
+
 int main(){
     struct node *root = new node(0);
     root->left = new node(1);
     root->right = new node(-2);
     root->left->right = new node(5);
-    cout << root->data << endl;
-    cout << root->left->data << " and ";
-    cout << root->right->data << endl;
-    cout << root->left->right->data << endl;
+    struct node *root_2 = new node(0);
+    root_2->left = new node(1);
+    root_2->right = new node(-2);
+    root_2->left->right = new node(5);
+    // root_2->left->left = new node(5);
 
-    cout << "Preorder : ";
-    // preorder(root);
-    vector<int> k = itr_pre(root);
-    for(auto i : k) cout << i;
-    cout << endl;
+    cout << equal_tree(root, root_2) << endl;
 
-    cout << "Postorder : ";
-    // postorder(root);
-    vector<int> k2 = itr_post(root);
-    for(auto i : k2) cout << i;
-    cout << endl;
+    // cout << root->data << endl;
+    // cout << root->left->data << " and ";
+    // cout << root->right->data << endl;
+    // cout << root->left->right->data << endl;
 
-    cout << "Inorder : ";
-    // inorder(root);
-    vector<int> k3 = itr_in(root);
-    for(auto i : k3) cout << i;
-    cout << endl;
+    // cout << "Preorder : ";
+    // // preorder(root);
+    // vector<int> k = itr_pre(root);
+    // for(auto i : k) cout << i;
+    // cout << endl;
 
-    int dia = 0;
-    diameter(root, dia);
-    cout << "Diameter : " << dia << endl;
+    // cout << "Postorder : ";
+    // // postorder(root);
+    // vector<int> k2 = itr_post(root);
+    // for(auto i : k2) cout << i;
+    // cout << endl;
 
-    int max_sum = INT_MIN;
-    path_sum(root, max_sum);
-    cout << "Max_sum : " << max_sum << endl;
+    // cout << "Inorder : ";
+    // // inorder(root);
+    // vector<int> k3 = itr_in(root);
+    // for(auto i : k3) cout << i;
+    // cout << endl;
 
-    cout << "Level order traversal : " << endl;;
-    vector<vector<int>> v = levle_order(root);
-    for(auto lvl : v){
-        for(auto i : lvl){
-            cout << i << " ";
-        }
-        cout << endl;
-    }
+    // int dia = 0;
+    // diameter(root, dia);
+    // cout << "Diameter : " << dia << endl;
 
-    cout << "Max_depth : " << max_Depth(root) << endl;
-    cout << "is_balanced : " << is_balanced(root) << endl;
+    // int max_sum = INT_MIN;
+    // path_sum(root, max_sum);
+    // cout << "Max_sum : " << max_sum << endl;
+
+    // cout << "Level order traversal : " << endl;;
+    // vector<vector<int>> v = levle_order(root);
+    // for(auto lvl : v){
+    //     for(auto i : lvl){
+    //         cout << i << " ";
+    //     }
+    //     cout << endl;
+    // }
+
+    // cout << "Max_depth : " << max_Depth(root) << endl;
+    // cout << "is_balanced : " << is_balanced(root) << endl;
 
     return 0;
 }
